@@ -45,13 +45,20 @@ public class basics_test {
 		while (true) {
 			System.out.println("検索する社員番号の最大範囲(MAX:206)を入力してください（半角数字で入力）");
 
-			if (sc.hasNextInt()) {
-				max_TargetID = sc.nextInt();
-				break;
-			} else {
+			if (!sc.hasNextInt()) {
 				System.out.println("入力が正しくありません。半角数字で入力してください。");
-				sc.next(); 
+				sc.next();
+				continue;
 			}
+			
+			max_TargetID = sc.nextInt();
+
+			if(max_TargetID < min_TargetID) {
+				System.out.println("最小範囲の入力より大きい値を入力してください。");
+				continue;
+			}
+			
+			break;
 		}
 		
 		System.out.println("-----検索する方の名前の入力-----");
